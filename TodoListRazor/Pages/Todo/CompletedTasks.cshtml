@@ -1,0 +1,37 @@
+﻿@page
+@using TodoListRazor.Models
+@using TodoListRazor.Pages.Todo
+@model CompleteTasksModel
+
+@{
+	ViewData["Title"] = "TodoList";
+}
+
+<h3>Completed</h3>
+
+@foreach (var item in Model.TodoTask)
+{
+	<div class="container-lg bg-secondary rounded-3">
+		<div class="row mt-4">
+			<div class="col-3"> 
+				<h3>@item.Name</h3>
+			</div>
+			<div class="col-1 text-center">
+				<h3>@item.Importance</h3>
+			</div>
+			<div class="col-2 offset-5 text-center">
+				<p class="mt-2">Created: @item.CreatedDate.ToShortDateString()</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-9"> 
+				<p class="fs-5">@item.Description</p>
+			</div>
+			<div class="col-2 text-center">
+				<p class="mt-2">Deadline: @item.DeadLine.ToShortDateString()</p>
+			</div>
+		</div>
+	</div>
+}
+
+

@@ -20,8 +20,9 @@
 {
 	<div class="d-flex text-white mb-5">
 		<div class="mt-4 me-3">
-			<input type="submit" class="btn-check" id="btn-check-outlined" autocomplete="off">
-			<label class="btn btn-outline-success" for="btn-check-outlined">Done</label><br>
+			<form method="post">
+				<input type="submit" asp-route-id="@item.Id" class="btn btn-outline-success" id="done" value="Done">
+			</form>
 		</div>
 		<div class="container-lg bg-dark rounded-3">
 			<div class="row mt-2">
