@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TodoListRazor.Models;
 
 namespace TodoListRazor.Data
 {
@@ -9,5 +10,6 @@ namespace TodoListRazor.Data
             : base(options)
         {
         }
+        public DbSet<TodoListRazor.Models.TodoTask> TodoTask { get; set; }
     }
 }

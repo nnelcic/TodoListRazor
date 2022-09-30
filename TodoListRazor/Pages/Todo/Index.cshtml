@@ -1,46 +1,30 @@
 ﻿@page
 @using TodoListRazor.Models
-@model TodoListRazor.Pages.Todo.IndexModel
+@using TodoListRazor.Pages.Todo
+@model IndexModel
 
 @{
 	ViewData["Title"] = "TodoList";
-
-	List<TodoTask> tasks = new()
-	{
-		new TodoTask()
-		{
-			Id = 1,
-			Name = "Task1",
-			Description = "Test1 asoidj oasijd oisaj doijasidijaso dj asj idojaosi jdio asjiod jias djoiasj d",
-			DeadLine = DateTime.Today.AddDays(1),
-			CreatedDate = DateTime.Now,
-			IsCompleted = false,
-			Importance = Importance.p2,
-		},
-		new TodoTask()
-		{
-			Id = 2,
-			Name = "Task2",
-			Description = "Test2 asoidj oiasj da sjoid jiaosjd oajs odisjao dsjaoi jodsia ois jodi",
-			DeadLine = DateTime.Today.AddDays(3),
-			CreatedDate = DateTime.Now,
-			IsCompleted = true,
-			Importance = Importance.p4,
-		}
-	};
 }
 
 <h3>Todo List</h3>
 
-@foreach (var item in tasks)
+<div class="row"> 
+	<div class="col-2 mx-auto mb-3">
+		<a asp-page="Create" class="btn btn-primary"  >Add New Task</a>
+	</div>
+</div>
+
+
+@foreach (var item in Model.TodoTask)
 {
 	<div class="d-flex text-white mb-5">
 		<div class="mt-4 me-3">
-			<input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="on">
+			<input type="submit" class="btn-check" id="btn-check-outlined" autocomplete="off">
 			<label class="btn btn-outline-success" for="btn-check-outlined">Done</label><br>
 		</div>
-		<div class="container-lg rounded-5 bg-dark">
-			<div class="row">
+		<div class="container-lg bg-dark rounded-3">
+			<div class="row mt-2">
 				<div class="col-3"> 
 					<h3>@item.Name</h3>
 				</div>
@@ -61,11 +45,8 @@
 			</div>
 		</div>
 		<div class="ms-3">
-			<input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="on">
-			<label class="btn btn-outline-danger" for="btn-check-outlined">Delete</label><br>
-
-			<input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="on">
-			<label class="btn btn-outline-primary mt-3 ms-2" for="btn-check-outlined">Edit</label><br>
+			<a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-primary ms-2">Edit</a>
+			<a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger mt-3">Delete</a>
 		</div>
 	</div>
 }
